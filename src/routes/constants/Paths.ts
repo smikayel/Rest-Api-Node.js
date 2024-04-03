@@ -12,6 +12,9 @@ const Paths = {
   Auth: {
     Base: '/auth',
   },
+  File: {
+    Base: '/file',
+  }
 };
 
 export type TPaths = Immutable<typeof Paths>;

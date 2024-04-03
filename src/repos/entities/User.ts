@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Files } from "./Files";
 
 export enum Roles {
   Admin = "Admin",
@@ -26,6 +27,10 @@ export class User {
   @Column()
   public password!: string;
 
-  @Column()
+  @Column({ nullable: true })
   public refreshToken!: string;
+
+
+  @OneToMany(() => Files, files => files.user)
+  public files!: File[];
 }
