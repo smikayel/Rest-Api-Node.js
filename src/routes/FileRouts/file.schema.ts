@@ -1,10 +1,9 @@
-import * as Joi from "joi";
+import * as Joi from 'joi'
 
+const fileSchema: Record<string, Joi.Schema> = {
+	idValidation: Joi.object().keys({
+		id: Joi.number().required(),
+	}),
+}
 
-const userSchema: Record<string, Joi.Schema> = {
-  file: Joi.object().keys({
-
-  }),
-};
-
-export default userSchema;
+export default fileSchema

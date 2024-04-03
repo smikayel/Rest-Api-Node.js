@@ -2,8 +2,9 @@
  * Setup express server.
  */
 
-import cookieParser from 'cookie-parser';
+
 import morgan from 'morgan';
+
 import path from 'path';
 import helmet from 'helmet';
 import express, { Request, Response, NextFunction } from 'express';
@@ -20,7 +21,6 @@ import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 
 import { NodeEnvs } from '@src/constants/misc';
 import { RouteError } from '@src/other/classes';
-
 
 const app = express();
 

@@ -11,7 +11,7 @@ export class Files {
   public name!: string;
 
   @Column()
-  public extension!: string;
+  public path!: string;
 
   @Column()
   public mimeType!: string;
