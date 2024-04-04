@@ -2,6 +2,14 @@
 
 This project was created with [express-generator-typescript](https://github.com/seanpmaxwell/express-generator-typescript).
 
+## How to run? 
+before starting be sure to run dockerize database
+### `docker compose up`
+Run migrations with the command
+### `npm run migrate`
+Run the server in development mode.
+### `npm run dev`
+
 ## Available Scripts
 
 ### `npm run dev`
