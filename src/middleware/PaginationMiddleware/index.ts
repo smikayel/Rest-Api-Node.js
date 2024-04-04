@@ -3,16 +3,16 @@ import { NextFunction, Response } from 'express';
 import { AuthenticatedRequest } from '../AuthMiddleware';
 
 export interface PaginationRequest extends AuthenticatedRequest {
-	pageNumber?: number,
+	pageSize?: number,
 	skip?: number
 }
 
 export const getPageAndSkipValues = (
-	req: AuthenticatedRequest,
-	defaultPageSize: number
+	req: AuthenticatedRequest
 ) => {
-	const pageNumber = Number(req.query.pageNumber) || 1
-	const skip = (pageNumber - 1) * defaultPageSize
+	const pageNumber = Number(req.query.page) || 1
+	const pageSize = Number(req.query.list_size) || 10
+	const skip = (pageNumber - 1) * pageSize
 	return { pageNumber, skip }
 }
 
@@ -24,10 +24,10 @@ export const WithPagination = (
 	next: NextFunction
 ) => {
 	try {
-        const { pageNumber, skip } = getPageAndSkipValues(req, DEFAULT_PAGE_SIZE)
-		req.pageNumber = pageNumber
-        req.skip = skip
-        next();
+		const { pageNumber, skip } = getPageAndSkipValues(req)
+		req.pageSize = pageNumber
+		req.skip = skip
+		next();
 	} catch (err) {
 		return res.status(401).json({ message: 'Invalid or expired token' });
 	}
